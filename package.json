@@ -1,7 +1,7 @@
 {
-  "name": "vercel-iptv-optimized",
-  "version": "2.1.0",
-  "description": "JSON-based IPTV Proxy",
+  "name": "vercel-iptv-proxy",
+  "version": "3.0.0",
+  "description": "JSON-based IPTV Proxy with Speed Test",
   "main": "api/iptv.js",
   "dependencies": {}
 }
