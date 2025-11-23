@@ -83,6 +83,7 @@
     "channels": [
       { "name": "苏州4K", "id": "sz4k", "logo": "苏州4K", "url": "https://tylive.kan0512.com/norecord/csztv4k_4k.m3u8" },
       { "name": "河北4K", "id": "hb4k", "logo": "河南4K", "url": "https://event.pull.hebtv.com:443/live/live101.m3u8" },
+      { "name": "第一财经", "id": "dycj", "logo": "第一财经", "url": "http://cdn3.veryfast.filegear-sg.me/live/dycj/stream.m3u8" },
       { "name": "浙江卫视", "id": "zjws", "logo": "浙江卫视", "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8" },
       { "name": "翡翠台", "id": "fct", "logo": "翡翠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=fct" },
       { "name": "明珠台", "id": "mzt", "logo": "TVB明珠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=mz" },
