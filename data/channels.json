@@ -23,8 +23,8 @@
       { "name": "CCTV16(4K) 奥林匹克", "id": "CCTV16-4K", "logo": "CCTV16", "url": "http://111.6.175.82:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-16-4K_8000.m3u8" },
       { "name": "CCTV17 农业农村", "id": "CCTV17", "logo": "CCTV17", "url": "http://111.6.175.82:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-17_4000.m3u8" },
       {
-        "name": "CGTN",
-        "id": "CGTN",
+        "name": "CGTN 英语",
+        "id": "CGTN-Eng",
         "logo": "CGTN",
         "url": [
           "https://0472.org/hls/cgtn.m3u8",
@@ -32,7 +32,7 @@
         ]
       },
       {
-        "name": "CGTN记录",
+        "name": "CGTN 记录",
         "id": "CGTN-Doc",
         "logo": "CGTN记录",
         "url": [
@@ -41,7 +41,7 @@
         ]
       },
       {
-        "name": "CGTN西语",
+        "name": "CGTN 西语",
         "id": "CGTN-ES",
         "logo": "CGTN西语",
         "url": [
@@ -50,7 +50,7 @@
         ]
       },
       {
-        "name": "CGTN法语",
+        "name": "CGTN 法语",
         "id": "CGTN-FR",
         "logo": "CGTN法语",
         "url": [
@@ -59,7 +59,7 @@
         ]
       },
       {
-        "name": "CGTN俄语",
+        "name": "CGTN 俄语",
         "id": "CGTN-RU",
         "logo": "CGTN俄语",
         "url": [
@@ -68,7 +68,7 @@
         ]
       },
       {
-        "name": "CGTN阿语",
+        "name": "CGTN 阿语",
         "id": "CGTN-AR",
         "logo": "CGTN阿语",
         "url": [
