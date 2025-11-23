@@ -89,12 +89,12 @@
       { "name": "中文网", "id": "zww", "logo": "凤凰卫视中文台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzw" },
       { "name": "资讯网", "id": "zxw", "logo": "凤凰卫视资讯台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzx" },
       { "name": "香港台", "id": "xgt", "logo": "凤凰卫视香港台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhhk" },
-      { "name": "跑马台", "id": "pmt", "logo": "跑马台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
       { "name": "经典台", "id": "jdt", "logo": "TVB 经典台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=qxjd" },
-      { "name": "POPC", "id": "popc", "logo": "POPC", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
       { "name": "TVB Plus", "id": "tvbplus", "logo": "TVBPlus", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=tvbp" },
-      { "name": "美亚电影台", "id": "mydy", "logo": "美亚电影台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
       { "name": "中天新闻台", "id": "ztxw", "logo": "中天新闻台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=ztxw" },
+      { "name": "POPC", "id": "popc", "logo": "POPC", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
+      { "name": "跑马台", "id": "pmt", "logo": "跑马台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
+      { "name": "美亚电影台", "id": "mydy", "logo": "美亚电影台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
       { "name": "无线新闻网", "id": "wxxw", "logo": "无线新闻网", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=wxxw" }
     ]
   }
