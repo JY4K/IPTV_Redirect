@@ -83,15 +83,19 @@
     "channels": [
       { "name": "苏州4K", "id": "sz4k", "logo": "苏州4K", "url": "https://tylive.kan0512.com/norecord/csztv4k_4k.m3u8" },
       { "name": "河北4K", "id": "hb4k", "logo": "河南4K", "url": "https://event.pull.hebtv.com:443/live/live101.m3u8" },
-      { "name": "第一财经", "id": "dycj", "logo": "第一财经", "url": "http://cdn3.veryfast.filegear-sg.me/live/dycj/stream.m3u8" },
-      { "name": "浙江卫视", "id": "zjws", "logo": "浙江卫视", "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8" },
+      { "name": "浙江卫视", "id": "zjws", "logo": "浙江卫视", "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8" }
+    ]
+  },
+  {
+    "group": "🇨🇳 港澳频道",
+    "channels": [
       { "name": "翡翠台", "id": "fct", "logo": "翡翠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=fct" },
       { "name": "明珠台", "id": "mzt", "logo": "TVB明珠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=mz" },
       { "name": "中文网", "id": "zww", "logo": "凤凰卫视中文台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzw" },
       { "name": "资讯网", "id": "zxw", "logo": "凤凰卫视资讯台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzx" },
       { "name": "香港台", "id": "xgt", "logo": "凤凰卫视香港台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhhk" },
-      { "name": "经典台", "id": "jdt", "logo": "TVB 经典台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=qxjd" },
       { "name": "TVB Plus", "id": "tvbplus", "logo": "TVBPlus", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=tvbp" },
+      { "name": "TVB 经典台", "id": "jdt", "logo": "TVB 经典台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=qxjd" },
       { "name": "中天新闻台", "id": "ztxw", "logo": "中天新闻台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=ztxw" },
       { "name": "POPC", "id": "popc", "logo": "POPC", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
       { "name": "跑马台", "id": "pmt", "logo": "跑马台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
