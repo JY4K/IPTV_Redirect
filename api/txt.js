@@ -3,45 +3,38 @@ const path = require('path');
 
 export default function handler(req, res) {
   try {
-    const filePath = path.join(process.cwd(), 'data', 'playlist.txt');
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const lines = fileContent.split('\n');
+    // 1. 读取数据
+    const filePath = path.join(process.cwd(), 'data', 'channels.json');
+    const groups = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     
-    // 获取当前 Vercel 部署的域名
+    // 2. 获取部署域名
     const protocol = req.headers['x-forwarded-proto'] || 'https';
     const host = req.headers['host'];
     const baseUrl = `${protocol}://${host}`;
 
     let txtOutput = '';
 
-    for (const line of lines) {
-      const trimmedLine = line.trim();
-      if (!trimmedLine) continue;
-
-      // 保持分组行原样输出
-      if (trimmedLine.includes('#genre#')) {
-        txtOutput += `${trimmedLine}\n`;
-        continue;
-      }
-
-      const parts = trimmedLine.split(',');
-      if (parts.length < 2) continue;
-
-      const name = parts[0].trim();
-      // 提取 ID (与 iptv.js 逻辑一致)
-      const id = name.split(' ')[0];
+    // 3. 遍历生成
+    for (const group of groups) {
+      // 输出分组标题
+      txtOutput += `${group.group},#genre#\n`;
       
-      // 生成 Vercel 中转链接
-      const proxyUrl = `${baseUrl}/iptv.php?id=${encodeURIComponent(id)}`;
-
-      txtOutput += `${name},${proxyUrl}\n`;
+      for (const channel of group.channels) {
+        // 输出格式: "频道名,中转URL"
+        const proxyUrl = `${baseUrl}/iptv.php?id=${channel.id}`;
+        txtOutput += `${channel.name},${proxyUrl}\n`;
+      }
+      
+      // === 格式优化：分组结束后添加空行 ===
+      txtOutput += '\n';
     }
 
+    // 4. 返回响应
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.status(200).send(txtOutput);
 
   } catch (error) {
     console.error(error);
-    res.status(500).send('Error generating TXT playlist');
+    res.status(500).send('Internal Server Error: Failed to generate TXT');
   }
 }
