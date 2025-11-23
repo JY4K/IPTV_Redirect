@@ -1,49 +1,97 @@
 const fs = require('fs');
 const path = require('path');
 
-// 辅助函数：解析 playlist.txt 并查找对应 ID 的 URL
-function findUrlById(targetId) {
+// 缓存 JSON 数据，减少重复读取
+let cachedData = null;
+
+function getChannels() {
+  if (cachedData) return cachedData;
   try {
-    const filePath = path.join(process.cwd(), 'data', 'playlist.txt');
+    const filePath = path.join(process.cwd(), 'data', 'channels.json');
     const fileContent = fs.readFileSync(filePath, 'utf8');
-    const lines = fileContent.split('\n');
+    cachedData = JSON.parse(fileContent);
+    return cachedData;
+  } catch (e) {
+    console.error("Failed to load channels.json", e);
+    return [];
+  }
+}
 
-    for (const line of lines) {
-      const trimmedLine = line.trim();
-      // 跳过空行和分组行
-      if (!trimmedLine || trimmedLine.includes('#genre#')) continue;
+// 辅助函数：检测单个 URL 是否可用（使用 HEAD 请求）
+// 设置 3000ms 超时，避免 Vercel 函数运行过久
+async function checkUrl(url) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 3000); // 3秒超时
 
-      const [name, url] = trimmedLine.split(',');
-      if (!name || !url) continue;
-
-      // 逻辑：提取名称的第一部分作为 ID (例如 "CCTV1 综合" -> "CCTV1")
-      // 如果没有空格，则整个名称就是 ID (例如 "浙江卫视" -> "浙江卫视")
-      const currentId = name.split(' ')[0];
-
-      if (currentId === targetId || name === targetId) {
-        return url.trim();
+  try {
+    const response = await fetch(url, { 
+      method: 'HEAD', 
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
       }
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (response.ok) {
+      return url;
+    } else {
+      throw new Error(`Status ${response.status}`);
     }
   } catch (error) {
-    console.error('Error reading playlist:', error);
+    clearTimeout(timeoutId);
+    throw error;
   }
-  return null;
 }
 
 export default async function handler(req, res) {
   const { id } = req.query;
 
   if (!id) {
-    return res.status(400).send('Missing "id" parameter');
+    return res.status(400).send('Error: Missing "id" parameter.');
   }
 
-  const streamUrl = findUrlById(id);
+  const groups = getChannels();
 
-  if (streamUrl) {
-    // 找到源，直接 302 重定向到真实地址
-    // 这种方式最省流量，也符合 Vercel 限制
-    return res.redirect(302, streamUrl);
-  } else {
-    return res.status(404).send(`Channel "${id}" not found.`);
+  // 1. 查找频道
+  let targetChannel = null;
+  for (const group of groups) {
+    const channel = group.channels.find(c => c.id === id);
+    if (channel) {
+      targetChannel = channel;
+      break;
+    }
+  }
+
+  if (!targetChannel) {
+    return res.status(404).send(`Error: Channel ID "${id}" not found.`);
+  }
+
+  // 2. 处理 URL
+  const urls = Array.isArray(targetChannel.url) ? targetChannel.url : [targetChannel.url];
+
+  // 情况 A: 只有一个 URL，直接跳转，无需检测 (最快)
+  if (urls.length === 1) {
+    return res.redirect(302, urls[0]);
+  }
+
+  // 情况 B: 多个 URL，并发检测，谁快谁赢
+  try {
+    // 构造检测队列
+    const checkPromises = urls.map(url => checkUrl(url));
+    
+    // Promise.any 返回第一个成功 (fulfilled) 的结果
+    const fastestUrl = await Promise.any(checkPromises);
+    
+    // 重定向到最快的有效链接
+    return res.redirect(302, fastestUrl);
+
+  } catch (error) {
+    // 情况 C: 所有检测都失败 (AggregateError)
+    console.warn(`All sources failed for ${id}, falling back to first URL.`);
+    
+    // 降级策略：如果检测都挂了，还是跳转到第一个链接试试
+    return res.redirect(302, urls[0]);
   }
 }
