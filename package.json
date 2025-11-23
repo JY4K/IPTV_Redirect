@@ -1,12 +1,7 @@
 {
-  "name": "vercel-iptv-proxy",
-  "version": "1.0.0",
-  "description": "IPTV Proxy and List Generator on Vercel",
-  "main": "api/index.js",
-  "scripts": {
-    "start": "node api/index.js"
-  },
-  "dependencies": {
-    "axios": "^1.6.0"
-  }
+  "name": "vercel-iptv-optimized",
+  "version": "2.1.0",
+  "description": "JSON-based IPTV Proxy",
+  "main": "api/iptv.js",
+  "dependencies": {}
 }
