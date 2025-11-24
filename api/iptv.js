@@ -70,6 +70,12 @@ export default async function handler(req, res) {
 
   // 2. 处理 URL
   const urls = Array.isArray(targetChannel.url) ? targetChannel.url : [targetChannel.url];
+  
+  // 对于IP授权频道，直接返回URL而不进行重定向
+  if (targetChannel.id === 'ipsq') {
+    // 直接返回第一个URL
+    return res.status(200).send(`URL: ${urls[0]}`);
+  }
 
   // 情况 A: 只有一个 URL，直接跳转，无需检测 (最快)
   if (urls.length === 1) {

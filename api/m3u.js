@@ -22,15 +22,19 @@ export default function handler(req, res) {
         const { name, id, logo } = channel;
         
         // 拼接 Logo 地址
-        // 使用 JSON 配置的 logo 字段 (例如 "CCTV16", "河南4K", "浙江卫视")
-        const logoUrl = `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
+        // 检测logo字段是否已经是完整URL，如果是则直接使用，否则使用原来的拼接方式
+        const isFullUrl = logo.startsWith('http://') || logo.startsWith('https://');
+        const logoUrl = isFullUrl ? logo : `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
         
-        // 生成中转地址
-        const proxyUrl = `${baseUrl}/iptv.php?id=${id}`;
+        // 生成URL
+        // 对于IP授权频道使用直连链接，其他频道使用中转地址
+        const isIpAuthChannel = id === 'ipsq';
+        const channelUrl = Array.isArray(channel.url) ? channel.url[0] : channel.url;
+        const outputUrl = isIpAuthChannel ? channelUrl : `${baseUrl}/iptv.php?id=${id}`;
 
         // 拼接单行信息
         m3uOutput += `#EXTINF:-1 tvg-name="${name}" tvg-logo="${logoUrl}" group-title="${group.group}",${name}\n`;
-        m3uOutput += `${proxyUrl}\n`;
+        m3uOutput += `${outputUrl}\n`;
       }
       
       // === 格式优化：分组结束后添加空行 ===

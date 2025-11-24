@@ -89,6 +89,7 @@
   {
     "group": "🇨🇳 港澳频道",
     "channels": [
+      { "name": "IP授权", "id": "ipsq", "logo": "https://jy4k.vercel.app/data/iptv/logo/IP授权.png", "url": ["http://bxtv.3a.ink/api.php?id=qxjd"] },
       { "name": "翡翠台", "id": "fct", "logo": "翡翠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=fct" },
       { "name": "明珠台", "id": "mzt", "logo": "明珠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=mz" },
       { "name": "中文网", "id": "zww", "logo": "凤凰卫视中文台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzw" },
@@ -96,10 +97,10 @@
       { "name": "香港台", "id": "xgt", "logo": "凤凰卫视香港台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhhk" },
       { "name": "TVB Plus", "id": "tvbplus", "logo": "TVBPlus", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=tvbp" },
       { "name": "中天新闻台", "id": "ztxw", "logo": "中天新闻台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=ztxw" },
-      { "name": "POPC", "id": "popc", "logo": "POPC", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
-      { "name": "跑马台", "id": "pmt", "logo": "跑马台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
-      { "name": "美亚电影台", "id": "mydy", "logo": "美亚电影台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
-      { "name": "无线新闻网", "id": "wxxw", "logo": "无线新闻网", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=wxxw" }
+      { "name": "POPC", "id": "popc", "logo": "https://jy4k.vercel.app/data/iptv/logo/POPC.png", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
+      { "name": "跑马台", "id": "pmt", "logo": "https://jy4k.vercel.app/data/iptv/logo/myTV SUPER 18.png", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
+      { "name": "美亚电影台", "id": "mydy", "logo": "https://jy4k.vercel.app/data/iptv/logo/美亚电影台.png", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
+      { "name": "无线新闻网", "id": "wxxw", "logo": "https://jy4k.vercel.app/data/iptv/logo/无线新闻台.png", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=wxxw" }
     ]
   }
 ]
