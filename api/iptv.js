@@ -5,54 +5,69 @@ const axios = require('axios');
 // 读取数据
 const loadChannels = () => {
   try {
-    return JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'channels.json'), 'utf8'));
-  } catch { return []; }
+    // Vercel 运行时 process.cwd() 通常是根目录
+    const jsonPath = path.join(process.cwd(), 'data', 'channels.json');
+    const fileContent = fs.readFileSync(jsonPath, 'utf8');
+    return JSON.parse(fileContent);
+  } catch (e) {
+    console.error("Error loading channels.json:", e.message);
+    return [];
+  }
 };
 
-export default async function handler(req, res) {
+// 使用 CommonJS 导出，防止语法报错
+module.exports = async (req, res) => {
   const { id } = req.query;
-  const fallbackUrl = '/data/测试卡.mp4'; // 兜底
+  const fallbackUrl = '/data/测试卡.mp4'; 
 
+  // 1. 基础检查
   if (!id) return res.redirect(302, fallbackUrl);
 
   const channels = loadChannels();
-  let channel = null;
-
-  // 1. 查找频道
-  for (const group of channels) {
-    channel = group.channels.find(c => c.id === id);
-    if (channel) break;
+  if (!channels || channels.length === 0) {
+    console.error("Channels list is empty or file not found.");
+    return res.redirect(302, fallbackUrl);
   }
 
-  if (!channel) return res.redirect(302, fallbackUrl);
+  // 2. 查找频道
+  let channel = null;
+  for (const group of channels) {
+    if (group.channels) {
+      channel = group.channels.find(c => c.id === id);
+      if (channel) break;
+    }
+  }
 
-  // 2. 准备 URL 列表
+  if (!channel) {
+    console.log(`Channel ID ${id} not found.`);
+    return res.redirect(302, fallbackUrl);
+  }
+
+  // 3. 准备 URL
   let urls = Array.isArray(channel.url) ? channel.url : [channel.url];
   urls = urls.filter(u => u && u.trim() !== '');
 
-  // 3. 特殊处理：IP授权 或 列表为空 -> 直接跳转第一个，不检测
+  // 4. IP授权或空链接 -> 直接跳转
   if (channel.name === 'IP授权' || urls.length === 0) {
     return res.redirect(302, urls[0] || fallbackUrl);
   }
 
-  // 4. 顺序检测
+  // 5. 顺序检测
   for (const url of urls) {
     try {
-      // 仅发送 HEAD 请求检测是否通畅，超时 1.5秒
+      // 仅检测是否通畅
       await axios.head(url, {
         timeout: 1500,
-        validateStatus: status => status >= 200 && status < 400 // 只要状态码正常就认为可用
+        validateStatus: status => status >= 200 && status < 400
       });
-
-      // [核心] 检测成功，直接重定向到【原始 URL】
+      // 成功 -> 重定向到原始链接
       return res.redirect(302, url);
-
     } catch (e) {
-      // 连接超时或报错，尝试下一个
+      // 失败 -> 继续下一个
       continue;
     }
   }
 
-  // 5. 全部失败 -> 兜底
+  // 6. 全部失败 -> 兜底
   return res.redirect(302, fallbackUrl);
-}
+};
