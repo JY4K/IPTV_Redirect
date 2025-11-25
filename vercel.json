@@ -2,7 +2,6 @@
   "rewrites": [
     { "source": "/ipv6.m3u", "destination": "/api/playlist?type=m3u" },
     { "source": "/ipv6.txt", "destination": "/api/playlist?type=txt" },
-    { "source": "/iptv.php", "destination": "/api/iptv" },
-    { "source": "/data/(.*)", "destination": "/api/data?filename=$1" }
+    { "source": "/iptv.php", "destination": "/api/iptv" }
   ]
 }
