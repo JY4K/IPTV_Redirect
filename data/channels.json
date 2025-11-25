@@ -2,30 +2,105 @@
   {
     "group": "🇨🇳 央视频道",
     "channels": [
-      { "name": "CCTV1 综合", "id": "CCTV1", "logo": "CCTV1", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-1H265_4000.m3u8" },
+      { "name": "CCTV1 综合", "id": "./data/logo/CCTV1.png", "logo": "CCTV1", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-1H265_4000.m3u8" },
       { "name": "CCTV2 财经", "id": "CCTV2", "logo": "CCTV2", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-2H265_4000.m3u8" },
       { "name": "CCTV3 综艺", "id": "CCTV3", "logo": "CCTV3", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-3H265_4000.m3u8" },
       { "name": "CCTV4 中文国际", "id": "CCTV4", "logo": "CCTV4", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-4H265_4000.m3u8" },
+      { "name": "CCTV4K 超高清", "id": "CCTV4K", "logo": "CCTV4K", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/ys4Kcq_2000.m3u8" },
       { "name": "CCTV5 体育", "id": "CCTV5", "logo": "CCTV5", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-5H265_4000.m3u8" },
       { "name": "CCTV5+ 体育赛事", "id": "CCTV5Plus", "logo": "CCTV5+", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-5plusH265_4000.m3u8" },
       { "name": "CCTV6 电影", "id": "CCTV6", "logo": "CCTV6", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-6H265_4000.m3u8" },
+      { "name": "CCTV7 国防军事", "id": "CCTV7", "logo": "CCTV7", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-7H265_4000.m3u8" },
       { "name": "CCTV8 电视剧", "id": "CCTV8", "logo": "CCTV8", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-8H265_4000.m3u8" },
-      { "name": "CCTV13 新闻", "id": "CCTV13", "logo": "CCTV13", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-xw_4000.m3u8" }
+      { "name": "CCTV9 纪录", "id": "CCTV9", "logo": "CCTV9", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-9H265_4000.m3u8" },
+      { "name": "CCTV10 科教", "id": "CCTV10", "logo": "CCTV10", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-10H265_4000.m3u8" },
+      { "name": "CCTV11 戏曲", "id": "CCTV11", "logo": "CCTV11", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-11-H265_4000.m3u8" },
+      { "name": "CCTV12 社会与法", "id": "CCTV12", "logo": "CCTV12", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-12H265_4000.m3u8" },
+      { "name": "CCTV13 新闻", "id": "CCTV13", "logo": "CCTV13", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-xw_4000.m3u8" },
+      { "name": "CCTV14 少儿", "id": "CCTV14", "logo": "CCTV14", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-14H265_4000.m3u8" },
+      { "name": "CCTV15 音乐", "id": "CCTV15", "logo": "CCTV15", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-15-yyH265_4000.m3u8" },
+      { "name": "CCTV16 奥林匹克", "id": "CCTV16", "logo": "CCTV16", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-16_4000.m3u8" },
+      { "name": "CCTV16(4K) 奥林匹克", "id": "CCTV16-4K", "logo": "CCTV16", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-16-4K_8000.m3u8" },
+      { "name": "CCTV17 农业农村", "id": "CCTV17", "logo": "CCTV17", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-17_4000.m3u8" },
+      {
+        "name": "CGTN 英语",
+        "id": "CGTN-Eng",
+        "logo": "CGTN",
+        "url": [
+          "https://0472.org/hls/cgtn.m3u8",
+          "http://english-livetx.cgtn.com/hls/yypdyyctzb_hd.m3u8"
+        ]
+      },
+      {
+        "name": "CGTN 记录",
+        "id": "CGTN-Doc",
+        "logo": "CGTN记录",
+        "url": [
+          "https://0472.org/hls/cgtnd.m3u8",
+          "https://english-livetx.cgtn.com/hls/yypdjlctzb_hd.m3u8"
+        ]
+      },
+      {
+        "name": "CGTN 西语",
+        "id": "CGTN-ES",
+        "logo": "CGTN西语",
+        "url": [
+          "https://0472.org/hls/cgtnx.m3u8",
+          "http://espanol-liveali.cgtn.com/hls/LSveOGBaBw41Ea7ukkVAUdKQ220802LSTexu6xAuFH8VZNBLE1ZNEa220802cd.m3u8"
+        ]
+      },
+      {
+        "name": "CGTN 法语",
+        "id": "CGTN-FR",
+        "logo": "CGTN法语",
+        "url": [
+          "https://0472.org/hls/cgtnf.m3u8",
+          "http://francais-livews.cgtn.com/hls/LSvev95OuFZtKLc6CeKEFYXj220802LSTeV6PO0Ut9r71Uq3k5goCA220802cd.m3u8"
+        ]
+      },
+      {
+        "name": "CGTN 俄语",
+        "id": "CGTN-RU",
+        "logo": "CGTN俄语",
+        "url": [
+          "https://0472.org/hls/cgtne.m3u8",
+          "http://russian-livews.cgtn.com/hls/LSvexABhNipibK5KRuUkvHZ7220802LSTeze9o8tdFXMHsb1VosgoT220802cd.m3u8"
+        ]
+      },
+      {
+        "name": "CGTN 阿语",
+        "id": "CGTN-AR",
+        "logo": "CGTN阿语",
+        "url": [
+          "https://0472.org/hls/cgtna.m3u8",
+          "http://arabic-livews.cgtn.com/hls/LSveq57bErWLinBnxosqjisZ220802LSTefTAS9zc9mpU08y3np9TH220802cd.m3u8"
+        ]
+      }
     ]
   },
   {
     "group": "🇨🇳 卫视频道",
     "channels": [
-      { "name": "重庆卫视", "id": "cqws", "logo": "重庆卫视", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/cqws_4000.m3u8" },
-      { "name": "浙江卫视", "id": "zjws", "logo": "浙江卫视", "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8" },
-      { "name": "湖南卫视", "id": "hnws", "logo": "湖南卫视", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/hnws_4000.m3u8" }
+      { "name": "苏州4K", "id": "sz4k", "logo": "苏州4K", "url": "https://tylive.kan0512.com/norecord/csztv4k_4k.m3u8" },
+      { "name": "河北4K", "id": "hb4k", "logo": "河南4K", "url": "https://event.pull.hebtv.com:443/live/live101.m3u8" },
+      { "name": "浙江卫视", "id": "zjws", "logo": "浙江卫视", "url": "https://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8" }
     ]
   },
   {
     "group": "🇨🇳 港澳频道",
     "channels": [
       { "name": "IP授权", "id": "ipsq", "logo": "./data/logo/IP授权.png", "url": ["http://bxtv.3a.ink/api.php?id=qxjd"] },
-      { "name": "翡翠台", "id": "fct", "logo": "翡翠台", "url": ["https://bxtv.3a.ink/mytv/mytvts1.333.php?id=fct"] }
+      { "name": "翡翠台", "id": "fct", "logo": "翡翠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=fct" },
+      { "name": "明珠台", "id": "mzt", "logo": "明珠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=mz" },
+      { "name": "中文网", "id": "zww", "logo": "凤凰卫视中文台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzw" },
+      { "name": "资讯网", "id": "zxw", "logo": "凤凰卫视资讯台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzx" },
+      { "name": "香港台", "id": "xgt", "logo": "凤凰卫视香港台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhhk" },
+      { "name": "TVB Plus", "id": "tvbplus", "logo": "TVBPlus", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=tvbp" },
+      { "name": "中天新闻台", "id": "ztxw", "logo": "中天新闻台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=ztxw" },
+      { "name": "POPC", "id": "popc", "logo": "./data/logo/POPC.png", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
+      { "name": "跑马台", "id": "pmt", "logo": "./data/logo/myTV SUPER 18.png", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
+      { "name": "美亚电影台", "id": "mydy", "logo": "./data/logo/美亚电影台.png", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
+      { "name": "无线新闻网", "id": "wxxw", "logo": "./data/logo/无线新闻台.png", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=wxxw" }
     ]
   }
 ]
