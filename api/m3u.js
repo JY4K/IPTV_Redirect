@@ -39,7 +39,7 @@ function buildChannelUrl(baseUrl, channel) {
 export default function handler(req, res) {
   try {
     // 1. 读取数据
-    const filePath = path.join(process.cwd(), 'data', 'channels.json');
+    const filePath = path.join(process.cwd(), 'public', 'channels.json');
     const groups = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     
     // 2. 获取部署域名
