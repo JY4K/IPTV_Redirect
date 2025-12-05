@@ -1,33 +1,15 @@
-const fs = require('fs');
-const path = require('path');
-
 /**
  * 构建完整的Logo URL
  * @param {string} logo - Logo路径或完整URL
- * @param {string} baseUrl - 部署基础URL
  * @returns {string} 完整的Logo URL
  */
-function buildLogoUrl(logo, baseUrl) {
-  // 1. 如果是完整URL，直接返回
+function buildLogoUrl(logo) {
+  // 如果是完整URL，直接返回
   if (logo.startsWith('http://') || logo.startsWith('https://')) {
     return logo;
   }
   
-  // 2. 如果是本地public路径，生成适配Vercel的静态文件URL
-  if (logo.startsWith('./public/logo/')) {
-    // Vercel会自动处理public文件夹中的静态文件，URL可以简化为 /logo/xxx.png
-    const logoFileName = path.basename(logo);
-    return `${baseUrl}/logo/${logoFileName}`;
-  }
-  
-  // 3. 如果是纯频道名（如"CCTV2"），优先使用本地public中的logo文件
-  // 先检查本地是否有对应的logo文件
-  const potentialLocalLogo = path.join(process.cwd(), 'public', 'logo', `${logo}.png`);
-  if (fs.existsSync(potentialLocalLogo)) {
-    return `${baseUrl}/logo/${logo}.png`;
-  }
-  
-  // 4. 最后使用原来的外部URL拼接逻辑作为备用
+  // 其他情况使用外部URL拼接逻辑
   return `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
 }
 
@@ -46,7 +28,7 @@ function buildChannelUrl(baseUrl, channel) {
 export default function handler(req, res) {
   try {
     // 1. 读取数据
-    const filePath = path.join(process.cwd(), 'public', 'channels.json');
+    const filePath = path.join(process.cwd(), 'data', 'channels.json');
     const groups = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     
     // 2. 获取部署域名
@@ -62,7 +44,7 @@ export default function handler(req, res) {
       for (const channel of group.channels) {
         const { name, id, logo } = channel;
         
-        const logoUrl = buildLogoUrl(logo, baseUrl);
+        const logoUrl = buildLogoUrl(logo);
         const channelUrl = buildChannelUrl(baseUrl, channel);
 
         // 拼接单行信息

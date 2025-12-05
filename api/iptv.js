@@ -11,7 +11,7 @@ let cachedData = null;
 function getChannels() {
   if (cachedData) return cachedData;
   try {
-    const filePath = path.join(process.cwd(), 'public', 'channels.json');
+    const filePath = path.join(process.cwd(), 'data', 'channels.json');
     const fileContent = fs.readFileSync(filePath, 'utf8');
     cachedData = JSON.parse(fileContent);
     return cachedData;
