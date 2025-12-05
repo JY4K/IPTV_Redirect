@@ -32,18 +32,24 @@ async function checkUrl(url) {
   const startTime = Date.now();
 
   try {
+    // 使用GET请求而不是HEAD请求，更准确地检测视频URL可用性
     const response = await fetch(url, { 
-      method: 'HEAD', 
+      method: 'GET',
       signal: controller.signal,
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Range': 'bytes=0-1023' // 只请求前1KB数据，减少带宽消耗
       }
     });
     
     clearTimeout(timeoutId);
     const responseTime = Date.now() - startTime;
     
-    if (response.ok) {
+    // 检查响应状态码
+    if (response.ok || response.status === 206) { // 206表示部分内容请求成功
+      // 读取一小部分响应数据以确保连接有效
+      // 使用arrayBuffer避免文本解码错误
+      await response.arrayBuffer();
       return { url, responseTime };
     } else {
       throw new Error(`Status ${response.status}`);
@@ -125,9 +131,18 @@ export default async function handler(req, res) {
     return res.status(200).send(`URL: ${urls[0]}`);
   }
 
-  // 情况 A: 只有一个 URL，直接跳转，无需检测 (最快)
+  // 情况 A: 只有一个 URL，先检测可用性再跳转
   if (urls.length === 1) {
-    return res.redirect(302, urls[0]);
+    try {
+      await checkUrl(urls[0]);
+      // 检测通过，重定向到该URL
+      return res.redirect(302, urls[0]);
+    } catch (error) {
+      // 检测失败，返回兜底视频
+      console.warn(`Single URL failed for channel ${id}, falling back to backup video:`, error.message);
+      await sendBackupVideo(res, id);
+      return;
+    }
   }
 
   // 情况 B: 多个 URL，并发检测，选择最快的可用链接
