@@ -1,6 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
+// 配置对象，统一管理文件路径
+const config = {
+  channelsFile: path.join(process.cwd(), 'data', 'channels.json')
+};
+
 /**
  * 构建频道代理URL
  * @param {string} baseUrl - 部署基础URL
@@ -14,8 +19,7 @@ function buildProxyUrl(baseUrl, channel) {
 export default function handler(req, res) {
   try {
     // 1. 读取数据
-    const filePath = path.join(process.cwd(), 'data', 'channels.json');
-    const groups = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    const groups = JSON.parse(fs.readFileSync(config.channelsFile, 'utf8'));
     
     // 2. 获取部署域名
     const protocol = req.headers['x-forwarded-proto'] || 'https';

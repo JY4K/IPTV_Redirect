@@ -1,6 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
+// 配置对象，统一管理文件路径
+const config = {
+  channelsFile: path.join(process.cwd(), 'data', 'channels.json'),
+  backupVideoFile: path.join(process.cwd(), 'data', '测试卡.mp4')
+};
+
 // 缓存 JSON 数据，减少重复读取
 let cachedData = null;
 
@@ -11,8 +17,7 @@ let cachedData = null;
 function getChannels() {
   if (cachedData) return cachedData;
   try {
-    const filePath = path.join(process.cwd(), 'data', 'channels.json');
-    const fileContent = fs.readFileSync(filePath, 'utf8');
+    const fileContent = fs.readFileSync(config.channelsFile, 'utf8');
     cachedData = JSON.parse(fileContent);
     return cachedData;
   } catch (e) {
@@ -66,7 +71,7 @@ async function checkUrl(url) {
  * @param {string} channelId - 频道ID
  */
 async function sendBackupVideo(res, channelId) {
-  const backupVideoPath = path.join(process.cwd(), 'public', '测试卡.mp4');
+  const backupVideoPath = config.backupVideoFile;
   
   try {
     // 检查文件是否存在
