@@ -2,7 +2,7 @@
   {
     "group": "🇨🇳 央视频道",
     "channels": [
-      { "name": "CCTV1 综合", "id": "CCTV1", "logo": "./public/logo/CCTV1.png", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-1H265_4000.m3u8" },
+      { "name": "CCTV1 综合", "id": "CCTV1", "logo": "CCTV1", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-1H265_4000.m3u8" },
       { "name": "CCTV2 财经", "id": "CCTV2", "logo": "CCTV2", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-2H265_4000.m3u8" },
       { "name": "CCTV3 综艺", "id": "CCTV3", "logo": "CCTV3", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-3H265_4000.m3u8" },
       { "name": "CCTV4 中文国际", "id": "CCTV4", "logo": "CCTV4", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-4H265_4000.m3u8" },
@@ -89,7 +89,7 @@
   {
     "group": "🇨🇳 港澳频道",
     "channels": [
-      { "name": "IP授权", "id": "ipsq", "logo": "./data/logo/IP授权.png", "url": ["http://bxtv.3a.ink/api.php?id=qxjd"] },
+      { "name": "IP授权", "id": "ipsq", "logo": "IP授权", "url": ["http://bxtv.3a.ink/api.php?id=qxjd"] },
       { "name": "翡翠台", "id": "fct", "logo": "翡翠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=fct" },
       { "name": "明珠台", "id": "mzt", "logo": "明珠台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=mz" },
       { "name": "中文网", "id": "zww", "logo": "凤凰卫视中文台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhzw" },
@@ -97,10 +97,10 @@
       { "name": "香港台", "id": "xgt", "logo": "凤凰卫视香港台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=fhhk" },
       { "name": "TVB Plus", "id": "tvbplus", "logo": "TVBPlus", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=tvbp" },
       { "name": "中天新闻台", "id": "ztxw", "logo": "中天新闻台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=ztxw" },
-      { "name": "POPC", "id": "popc", "logo": "./data/logo/POPC.png", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
-      { "name": "跑马台", "id": "pmt", "logo": "./data/logo/myTV SUPER 18.png", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
-      { "name": "美亚电影台", "id": "mydy", "logo": "./data/logo/美亚电影台.png", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
-      { "name": "无线新闻网", "id": "wxxw", "logo": "./data/logo/无线新闻台.png", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=wxxw" }
+      { "name": "POPC", "id": "popc", "logo": "POPC", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=popc" },
+      { "name": "跑马台", "id": "pmt", "logo": "myTV SUPER 18", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=18" },
+      { "name": "美亚电影台", "id": "mydy", "logo": "美亚电影台", "url": "https://bxtv.3a.ink/mytv/mytvts2.333.php?id=meiya" },
+      { "name": "无线新闻网", "id": "wxxw", "logo": "无线新闻台", "url": "https://bxtv.3a.ink/mytv/mytvts1.333.php?id=wxxw" }
     ]
   }
 ]

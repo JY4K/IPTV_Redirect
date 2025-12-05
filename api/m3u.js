@@ -13,14 +13,21 @@ function buildLogoUrl(logo, baseUrl) {
     return logo;
   }
   
-  // 2. 如果是本地public路径，直接使用该路径
+  // 2. 如果是本地public路径，生成适配Vercel的静态文件URL
   if (logo.startsWith('./public/logo/')) {
-    // 移除开头的./，使用部署域名构建完整URL
-    const localPath = logo.substring(2); // 移除开头的./
-    return `${baseUrl}/${localPath}`;
+    // Vercel会自动处理public文件夹中的静态文件，URL可以简化为 /logo/xxx.png
+    const logoFileName = path.basename(logo);
+    return `${baseUrl}/logo/${logoFileName}`;
   }
   
-  // 3. 其他情况使用原来的外部URL拼接逻辑
+  // 3. 如果是纯频道名（如"CCTV2"），优先使用本地public中的logo文件
+  // 先检查本地是否有对应的logo文件
+  const potentialLocalLogo = path.join(process.cwd(), 'public', 'logo', `${logo}.png`);
+  if (fs.existsSync(potentialLocalLogo)) {
+    return `${baseUrl}/logo/${logo}.png`;
+  }
+  
+  // 4. 最后使用原来的外部URL拼接逻辑作为备用
   return `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
 }
 
