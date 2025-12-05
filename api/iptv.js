@@ -95,9 +95,22 @@ export default async function handler(req, res) {
 
   } catch (error) {
     // 情况 C: 所有检测都失败 (AggregateError)
-    console.warn(`All sources failed for ${id}, falling back to first URL.`);
+    console.warn(`All sources failed for ${id}, falling back to backup video.`);
     
-    // 降级策略：如果检测都挂了，还是跳转到第一个链接试试
-    return res.redirect(302, urls[0]);
+    // 降级策略：返回兜底视频
+    const backupVideoPath = path.join(process.cwd(), 'data', '测试卡.mp4');
+    
+    try {
+      // 设置正确的Content-Type
+      res.setHeader('Content-Type', 'video/mp4');
+      // 使用fs.createReadStream来流式传输视频文件
+      const videoStream = fs.createReadStream(backupVideoPath);
+      videoStream.pipe(res);
+    } catch (fsError) {
+      console.error(`Failed to read backup video for ${id}:`, fsError);
+      res.status(500).send('Error: Failed to load backup video.');
+    }
+    
+    return;
   }
 }

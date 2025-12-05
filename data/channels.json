@@ -21,7 +21,7 @@
       { "name": "CCTV15 音乐", "id": "CCTV15", "logo": "CCTV15", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-15-yyH265_4000.m3u8" },
       { "name": "CCTV16 奥林匹克", "id": "CCTV16", "logo": "CCTV16", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-16_4000.m3u8" },
       { "name": "CCTV16(4K) 奥林匹克", "id": "CCTV16-4K", "logo": "CCTV16", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-16-4K_8000.m3u8" },
-      { "name": "CCTV17 农业农村", "id": "CCTV17", "logo": "CCTV17", "url": "http://120.222.255.9:2380/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-17_4000.m3u8" },
+      { "name": "CCTV17 农业农村", "id": "CCTV17", "logo": "CCTV17", "url": "http://120.222.255.9:238/hw1live.rxip.sc96655.com.huan.tv/live/CCTV-17_4000.m3u8" },
       {
         "name": "CGTN 英语",
         "id": "CGTN-Eng",
