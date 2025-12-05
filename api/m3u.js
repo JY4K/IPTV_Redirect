@@ -4,12 +4,23 @@ const path = require('path');
 /**
  * 构建完整的Logo URL
  * @param {string} logo - Logo路径或完整URL
+ * @param {string} baseUrl - 部署基础URL
  * @returns {string} 完整的Logo URL
  */
-function buildLogoUrl(logo) {
+function buildLogoUrl(logo, baseUrl) {
+  // 1. 如果是完整URL，直接返回
   if (logo.startsWith('http://') || logo.startsWith('https://')) {
     return logo;
   }
+  
+  // 2. 如果是本地public路径，直接使用该路径
+  if (logo.startsWith('./public/logo/')) {
+    // 移除开头的./，使用部署域名构建完整URL
+    const localPath = logo.substring(2); // 移除开头的./
+    return `${baseUrl}/${localPath}`;
+  }
+  
+  // 3. 其他情况使用原来的外部URL拼接逻辑
   return `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
 }
 
@@ -44,7 +55,7 @@ export default function handler(req, res) {
       for (const channel of group.channels) {
         const { name, id, logo } = channel;
         
-        const logoUrl = buildLogoUrl(logo);
+        const logoUrl = buildLogoUrl(logo, baseUrl);
         const channelUrl = buildChannelUrl(baseUrl, channel);
 
         // 拼接单行信息

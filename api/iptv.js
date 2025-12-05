@@ -11,7 +11,7 @@ let cachedData = null;
 function getChannels() {
   if (cachedData) return cachedData;
   try {
-    const filePath = path.join(process.cwd(), 'data', 'channels.json');
+    const filePath = path.join(process.cwd(), 'public', 'channels.json');
     const fileContent = fs.readFileSync(filePath, 'utf8');
     cachedData = JSON.parse(fileContent);
     return cachedData;
@@ -66,7 +66,7 @@ async function checkUrl(url) {
  * @param {string} channelId - 频道ID
  */
 async function sendBackupVideo(res, channelId) {
-  const backupVideoPath = path.join(process.cwd(), 'data', '测试卡.mp4');
+  const backupVideoPath = path.join(process.cwd(), 'public', '测试卡.mp4');
   
   try {
     // 检查文件是否存在
