@@ -1,6 +1,16 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * 构建频道代理URL
+ * @param {string} baseUrl - 部署基础URL
+ * @param {Object} channel - 频道信息对象
+ * @returns {string} 完整的代理URL
+ */
+function buildProxyUrl(baseUrl, channel) {
+  return `${baseUrl}/iptv.php?id=${channel.id}`;
+}
+
 export default function handler(req, res) {
   try {
     // 1. 读取数据
@@ -21,11 +31,11 @@ export default function handler(req, res) {
       
       for (const channel of group.channels) {
         // 输出格式: "频道名,中转URL"
-        const proxyUrl = `${baseUrl}/iptv.php?id=${channel.id}`;
+        const proxyUrl = buildProxyUrl(baseUrl, channel);
         txtOutput += `${channel.name},${proxyUrl}\n`;
       }
       
-      // === 格式优化：分组结束后添加空行 ===
+      // 格式优化：分组结束后添加空行
       txtOutput += '\n';
     }
 
@@ -34,7 +44,7 @@ export default function handler(req, res) {
     res.status(200).send(txtOutput);
 
   } catch (error) {
-    console.error(error);
+    console.error('Failed to generate TXT:', error);
     res.status(500).send('Internal Server Error: Failed to generate TXT');
   }
 }

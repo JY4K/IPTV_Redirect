@@ -1,6 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * 构建完整的Logo URL
+ * @param {string} logo - Logo路径或完整URL
+ * @returns {string} 完整的Logo URL
+ */
+function buildLogoUrl(logo) {
+  if (logo.startsWith('http://') || logo.startsWith('https://')) {
+    return logo;
+  }
+  return `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
+}
+
+/**
+ * 构建频道播放URL
+ * @param {string} baseUrl - 部署基础URL
+ * @param {Object} channel - 频道信息对象
+ * @returns {string} 完整的播放URL
+ */
+function buildChannelUrl(baseUrl, channel) {
+  const isIpAuthChannel = channel.id === 'ipsq';
+  const channelUrl = Array.isArray(channel.url) ? channel.url[0] : channel.url;
+  return isIpAuthChannel ? channelUrl : `${baseUrl}/iptv.php?id=${channel.id}`;
+}
+
 export default function handler(req, res) {
   try {
     // 1. 读取数据
@@ -18,26 +42,17 @@ export default function handler(req, res) {
     // 4. 遍历生成
     for (const group of groups) {
       for (const channel of group.channels) {
-        // 使用 JSON 中明确定义的 id 和 logo
         const { name, id, logo } = channel;
         
-        // 拼接 Logo 地址
-        // 检测logo字段是否已经是完整URL，如果是则直接使用，否则使用原来的拼接方式
-        const isFullUrl = logo.startsWith('http://') || logo.startsWith('https://');
-        const logoUrl = isFullUrl ? logo : `https://fy.188766.xyz/logo/fanmingming/live/tv/${encodeURIComponent(logo)}.png`;
-        
-        // 生成URL
-        // 对于IP授权频道使用直连链接，其他频道使用中转地址
-        const isIpAuthChannel = id === 'ipsq';
-        const channelUrl = Array.isArray(channel.url) ? channel.url[0] : channel.url;
-        const outputUrl = isIpAuthChannel ? channelUrl : `${baseUrl}/iptv.php?id=${id}`;
+        const logoUrl = buildLogoUrl(logo);
+        const channelUrl = buildChannelUrl(baseUrl, channel);
 
         // 拼接单行信息
         m3uOutput += `#EXTINF:-1 tvg-name="${name}" tvg-logo="${logoUrl}" group-title="${group.group}",${name}\n`;
-        m3uOutput += `${outputUrl}\n`;
+        m3uOutput += `${channelUrl}\n`;
       }
       
-      // === 格式优化：分组结束后添加空行 ===
+      // 格式优化：分组结束后添加空行
       m3uOutput += '\n';
     }
 
@@ -46,7 +61,7 @@ export default function handler(req, res) {
     res.status(200).send(m3uOutput);
 
   } catch (error) {
-    console.error(error);
+    console.error('Failed to generate M3U:', error);
     res.status(500).send('Internal Server Error: Failed to generate M3U');
   }
 }
